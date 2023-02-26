@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-public class Publisher {
+public class KinesisPublisher {
   private final ObjectMapper objectMapper;
   private final AmazonKinesis amazonKinesis;
 

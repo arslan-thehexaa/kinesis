@@ -1,7 +1,7 @@
 package localstack.aws.kinesis.controller;
 
 import localstack.aws.kinesis.dto.KinesisPayload;
-import localstack.aws.kinesis.service.publisher.Publisher;
+import localstack.aws.kinesis.service.publisher.KinesisPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProducerController {
 
   @Autowired
-  private Publisher publisher;
+  private KinesisPublisher kinesisPublisher;
 
   @PostMapping("sendDataToKinesis")
   public ResponseEntity<?> sendDataToKinesis(@RequestBody KinesisPayload kinesisPayload) {
-    return ResponseEntity.ok(publisher.sendToKinesis(kinesisPayload).getSequenceNumber());
+    return ResponseEntity.ok(kinesisPublisher.sendToKinesis(kinesisPayload).getSequenceNumber());
   }
 
 }
