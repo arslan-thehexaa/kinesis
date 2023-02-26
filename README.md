@@ -7,12 +7,12 @@
 * This code is written in Java 11 and Spring Boot framework.
 
 # TODO before running the code
-* Make sure docker & docker-compose is up & running on your system.
-* run <b>docker-compose.yml</b> file in the repo which will start a localstack container. Use below command for this purpose:
+* Make sure <b>docker</b> & <b>docker-compose</b> is up & running on your system.
+* Run <b>docker-compose.yml</b> file in the repo which will start a localstack container. Use below command for this purpose:
   ```
   docker-compose up -d
   ```
-* create a sample stream in localstack using below command:
+* Create a sample stream in localstack using below command:
   ```
   aws kinesis create-stream <stream-name> --shard-count <shard-count> --endpoint-url <your-localstack-container-url>
   ```
