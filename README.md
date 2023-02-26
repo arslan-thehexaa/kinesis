@@ -14,7 +14,7 @@
   ```
 * Create a sample stream in localstack using below command:
   ```
-  aws kinesis create-stream <stream-name> --shard-count <shard-count> --endpoint-url <your-localstack-container-url>
+  aws kinesis create-stream --stream-name <stream-name> --shard-count <shard-count> --endpoint-url <your-localstack-container-url>
   ```
   * shard-count: for testing purpose 1 would suffice
   * endpoint-url: usually it is http://localhost:4566, can be different depending upon your localstack container config

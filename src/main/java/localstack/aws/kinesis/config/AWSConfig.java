@@ -3,6 +3,7 @@ package localstack.aws.kinesis.config;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatchClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -18,18 +19,12 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class AWSConfig {
 
-  @Value("${cloud.aws.region.static}")
-  private String region;
-
+  @Value("${cloud.aws.region}")
+  private Regions region;
   @Value("${cloud.aws.credentials.access-key}")
   private String accessKeyId;
-
   @Value("${cloud.aws.credentials.secret-key}")
   private String secretAccessKey;
-
-  @Value("${cloud.aws.queue.uri}")
-  private String sqsUrl;
-
   @Value("${cloud.aws.endpoint-url}")
   private String endpointUrl;
 
@@ -38,7 +33,7 @@ public class AWSConfig {
     BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
     return AmazonKinesisClientBuilder.standard()
         .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-        .withEndpointConfiguration(new EndpointConfiguration(endpointUrl, region))
+        .withEndpointConfiguration(new EndpointConfiguration(endpointUrl, region.getName()))
         .build();
   }
 
@@ -47,7 +42,7 @@ public class AWSConfig {
     BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
     return AmazonDynamoDBClientBuilder.standard()
         .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-        .withEndpointConfiguration(new EndpointConfiguration(endpointUrl, region))
+        .withEndpointConfiguration(new EndpointConfiguration(endpointUrl, region.getName()))
         .build();
   }
 
@@ -56,7 +51,7 @@ public class AWSConfig {
     BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
     return AmazonCloudWatchClientBuilder.standard()
         .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-        .withEndpointConfiguration(new EndpointConfiguration(endpointUrl, region))
+        .withEndpointConfiguration(new EndpointConfiguration(endpointUrl, region.getName()))
         .build();
   }
 }

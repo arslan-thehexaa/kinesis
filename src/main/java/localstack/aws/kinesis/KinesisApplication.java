@@ -9,7 +9,4 @@ public class KinesisApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KinesisApplication.class, args);
 	}
-
-
-
 }

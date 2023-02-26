@@ -18,7 +18,7 @@ public class ProducerController {
 
   @PostMapping("sendDataToKinesis")
   public ResponseEntity<?> sendDataToKinesis(@RequestBody KinesisPayload kinesisPayload) {
-    return ResponseEntity.ok(publisher.sendToKinesis(kinesisPayload));
+    return ResponseEntity.ok(publisher.sendToKinesis(kinesisPayload).getSequenceNumber());
   }
 
 }
