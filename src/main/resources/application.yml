@@ -1,0 +1,10 @@
+cloud:
+  aws:
+    endpoint-url: http://localhost:4566/
+    region:
+      static: eu-central-1
+    credentials:
+      access-key: arslanKEY
+      secret-key: arslanSECRET
+    kinesis:
+      stream-name: sample-stream
